@@ -121,10 +121,10 @@ if (isset($resultlist)) {
                                                     <?php
                                                         } else {
                                                         
-                                                        $count = 1;
+                                                                    $count = 1;
                                                                     foreach ($resultlist as $student) {
                                                             
-                                                                    $student_due_fee = $this->studentfeemaster_model->getStudentFees($student['id']);
+                                                                    $student_due_fee = $this->studentfeemaster_model->getStudentFees($student['student_session_id']);
                                                                  
                                                                     $total_amount           = 0;
                                                                     $total_deposite_amount  = 0;
@@ -169,7 +169,7 @@ if (isset($resultlist)) {
                                                             <?php
                                                                 
                                                                     $hidde = 'checkbox';
-                                                                    if ($total_amount>0) {
+                                                                    if ($total_balance_amount>0) {
                                                                         $hidde = 'hidden';
                                                                         // Change the color if the condition is true
                                                                     } 
@@ -201,16 +201,14 @@ if (isset($resultlist)) {
                                                             
 
                                                             <td class="text-center">
-                                                                <?php echo $total_balance_amount;?>
+                                                                <?php echo $total_balance_amount?>
                                                             </td>
 
                                                             <td align="left" class="text text-left">
                                                                 <?php
-                                                                    if ($total_amount == 0) {
+                                                                    if ($total_balance_amount == 0) {
                                                                                     ?><span class="label label-success"><?php echo $this->lang->line('paid'); ?></span><?php
-                                                                    } else if (!empty($fee_value->amount_detail)) {
-                                                                                    ?><span class="label label-warning"><?php echo $this->lang->line('partial'); ?></span><?php
-                                                                    } else {
+                                                                    }else {
                                                                         ?><span class="label label-danger"><?php echo $this->lang->line('unpaid'); ?></span><?php
                                                                     }
                                                                 ?>
